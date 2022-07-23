@@ -78,6 +78,7 @@
                     var url_string = window.location.href;
                     var url = new URL(url_string);
                     var id = url.searchParams.get("id");
+                    recvIdInput.value=id;
                     alert(id);
                     if(id!=undefined){
                         conn = peer.connect(id, {
@@ -90,7 +91,7 @@
                     peer = new Peer(null, {
                         debug: 2
                     });
-                    initializeFromParameter();
+
                     peer.on('open', function (id) {
                         // Workaround for peer.reconnect deleting previous id
                         if (peer.id === null) {
@@ -101,6 +102,7 @@
                         }
 
                         console.log('ID: ' + peer.id);
+                        initializeFromParameter();
                     });
                     peer.on('connection', function (c) {
                         // Disallow incoming connections
