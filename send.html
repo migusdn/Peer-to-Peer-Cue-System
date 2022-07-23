@@ -89,7 +89,7 @@
                     peer = new Peer(null, {
                         debug: 2
                     });
-
+                    initializeFromParameter();
                     peer.on('open', function (id) {
                         // Workaround for peer.reconnect deleting previous id
                         if (peer.id === null) {
