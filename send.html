@@ -74,6 +74,16 @@
                  * Sets up callbacks that handle any events related to our
                  * peer object.
                  */
+                function initializeFromParameter(){
+                    var url_string = window.location.href;
+                    var url = new URL(url_string);
+                    var id = url.searchParams.get("id");
+                    if(id!=undefined){
+                        conn = peer.connect(id, {
+                            reliable: true
+                        });
+                    }
+                }
                 function initialize() {
                     // Create own peer object with connection to shared PeerJS server
                     peer = new Peer(null, {
